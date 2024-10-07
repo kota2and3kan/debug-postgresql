@@ -22,7 +22,5 @@ jobs:
 
       - name: Build container images
         run: |
-          pwd
-          ls -lR
-          docker build -t "debug-postgresql:${{ matrix.version }}" ./postgresql${{ matrix.version }}/Dockerfile
+          docker build -t "debug-postgresql:${{ matrix.version }}" ./postgresql${{ matrix.version }}/
           docker image ls
