@@ -1,0 +1,27 @@
+name: Build container images for testing
+
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-container-image:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        version:
+          - 17
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build container images
+        run: docker build -t "debug-postgresql:${{ matrix.version }}" ./postgresql${{ matrix.version }}/
+
+      - name: Check container images
+        run: docker image ls
