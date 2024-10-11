@@ -6,7 +6,7 @@ RUN apt update \
  && curl -O https://ftp.postgresql.org/pub/source/v17.0/postgresql-17.0.tar.gz \
  && tar xzf postgresql-17.0.tar.gz \
  && chown -R postgres. postgresql-17.0/ \
- && su - postgres -c "cd /usr/local/src/postgresql-17.0/ && ./configure --enable-debug --with-openssl CFLAGS='-O0 -g3' && make world-bin" \
+ && su - postgres -c "cd /usr/local/src/postgresql-17.0/ && ./configure --enable-debug --with-openssl CFLAGS='-O0 -g3' && make world-bin -j 4 -s" \
  && cd /usr/local/src/postgresql-17.0/ \
  && make install-world-bin \
  && apt clean -y \
