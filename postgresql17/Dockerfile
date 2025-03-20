@@ -3,11 +3,11 @@ RUN apt update \
  && apt install -y make gcc libreadline-dev zlib1g-dev curl libssl-dev libicu-dev pkgconf bison flex gdb vim-tiny libreadline8 openssl libc6 \
  && useradd -m -s /bin/bash postgres \
  && cd /usr/local/src \
- && curl -O https://ftp.postgresql.org/pub/source/v17.0/postgresql-17.0.tar.gz \
- && tar xzf postgresql-17.0.tar.gz \
- && chown -R postgres. postgresql-17.0/ \
- && su - postgres -c "cd /usr/local/src/postgresql-17.0/ && ./configure --enable-debug --with-openssl CFLAGS='-O0 -ggdb -pipe' && make world-bin -j 4 -s" \
- && cd /usr/local/src/postgresql-17.0/ \
+ && curl -O https://ftp.postgresql.org/pub/source/v17.4/postgresql-17.4.tar.gz \
+ && tar xzf postgresql-17.4.tar.gz \
+ && chown -R postgres. postgresql-17.4/ \
+ && su - postgres -c "cd /usr/local/src/postgresql-17.4/ && ./configure --enable-debug --with-openssl CFLAGS='-O0 -ggdb -pipe' && make world-bin -j 4 -s" \
+ && cd /usr/local/src/postgresql-17.4/ \
  && make install-world-bin \
  && apt clean -y \
  && rm -rf /var/lib/apt/lists/* \
